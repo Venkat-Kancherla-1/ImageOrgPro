@@ -1,4 +1,4 @@
-The "IMageOrgPro" is a web application designed to streamline image management and organization for SVVR Infra, a company dealing with visual assets and projects. The application provides an efficient way for SVVR Infra to create, view, and delete posts, each containing multiple images related to their various projects. The application aims to save time and enhance productivity by simplifying the image handling process.
+The "ImageOrgPro" is a web application designed to streamline image management and organization for SVVR Infra, a company dealing with visual assets and projects. The application provides an efficient way for SVVR Infra to create, view, and delete posts, each containing multiple images related to their various projects. The application aims to save time and enhance productivity by simplifying the image handling process.
 
 Key Features:
 
