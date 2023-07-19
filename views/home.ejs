@@ -1,0 +1,108 @@
+<%- include("partials/header"); -%>
+
+<p><%= startingContent %></p>
+
+<!-- Modal for confirmation -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Confirmation Required</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Please enter password to confirm deletion:</p>
+        <input type="text" class="form-control" id="confirmationInput">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" onclick="submitWithConfirmation()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (posts && posts.length > 0) { %>
+  <% posts.forEach(function(post) { %>
+    <h3><%= post.title %></h3>
+    <h3><%= post.content %></h3>
+    <h5><a href="/posts/<%= post._id %>" class="open-button">Open</a></h5>
+    <% if (post.images && post.images.length > 0) { %>
+      <% const image1Array = post.images.filter(img => img.fieldName === 'image1') %>
+      <% if (image1Array.length > 0) { %>
+        <h5>Before work</h5>
+        <div class="image-row">
+          <% image1Array.forEach(function(image) { %>
+            <div class="image-container">
+              <img src="<%= image.imageUrl %>" class="img-fluid img-thumbnail rounded" alt="Image" width="100%" height="auto" />
+            </div>
+          <% }); %>
+        </div>
+      <% } %>
+      <% const image2Array = post.images.filter(img => img.fieldName === 'image2') %>
+      <% if (image2Array.length > 0) { %>
+        <br>
+        <h5>On work</h5>
+        <div class="image-row">
+          <% image2Array.forEach(function(image) { %>
+            <div class="image-container">
+              <img src="<%= image.imageUrl %>" class="img-fluid img-thumbnail rounded" alt="Image" width="100%" height="auto" />
+            </div>
+          <% }); %>
+        </div>
+      <% } %>
+      <% const image3Array = post.images.filter(img => img.fieldName === 'image3') %>
+      <% if (image3Array.length > 0) { %>
+        <br>
+        <h5>After work</h5>
+        <div class="image-row">
+          <% image3Array.forEach(function(image) { %>
+            <div class="image-container">
+              <img src="<%= image.imageUrl %>" class="img-fluid img-thumbnail rounded" alt="Image" width="100%" height="auto" />
+            </div>
+          <% }); %>
+        </div>
+      <% } %>
+    <% } %>
+    <br>
+    <button type="button" class="btn btn-danger" onclick="openConfirmationModal('<%= post._id %>')">Delete</button>
+    <form action="/delete" method="POST" data-post="<%= post._id %>">
+      <input type="hidden" name="postId" value="<%= post._id %>">
+      <!-- No need to add the confirmation field here -->
+    </form>
+    <hr>
+  <% }); %>
+<% } else { %>
+  <p>No posts available.</p>
+<% } %>
+
+<%- include("partials/footer"); -%>
+
+<script>
+  let currentPostId;
+
+  function openConfirmationModal(postId) {
+    currentPostId = postId;
+    $('#confirmationModal').modal('show');
+  }
+
+  function submitWithConfirmation() {
+    const confirmationInput = document.getElementById('confirmationInput').value;
+    if (confirmationInput === 'confirmation value') {
+      $('#confirmationModal').modal('hide');
+
+      // Prepare the form for submission
+      const form = document.querySelector(`form[data-post='${currentPostId}']`);
+      const inputField = document.createElement("input");
+      inputField.type = "hidden";
+      inputField.name = "confirmation";
+      inputField.value = "confirmation value";
+      form.appendChild(inputField);
+      
+      // Submit the form
+      form.submit();
+    }
+  }
+</script>

@@ -1,0 +1,127 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+
+.footer-padding {
+	padding-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #112D4E;
+}
+
+.footer p {
+	margin-top: 25px;
+	font-size: 12px;
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Apply different styles for images based on the window width */
+@media (max-width: 600px) {
+  img {
+      /* If the window width is less than or equal to 600px */
+      /* Images will fit the window width without resizing */
+      max-width: none;
+      width: 100%;
+      height: auto;
+  }
+}
+
+header{
+  background-color:#F9F7F7
+}
+
+.svvr{
+  background-color:#1abc9c;
+  color:white;
+  width:60%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  padding:10px;
+  }
+
+section{
+  background-color:white;
+  color:black;
+  width:60%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  border-width:5px;
+  border-style:solid;
+  border-color:#1abc9c;
+  padding:8px;
+  }
+
+  .image-container{
+    width: auto; 
+    height: 100px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h1,h2,h3,h4,h5{
+    font-family: 'Playfair Display', serif;
+  }
+
+  td{
+    text-align: left;
+  }
+
+  a.open-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the "Open" link button */
+  a.open-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+
+  .image-row {
+    display: flex;
+    flex-wrap: wrap;
+  }

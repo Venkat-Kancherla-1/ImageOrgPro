@@ -1,0 +1,35 @@
+<%- include("partials/header"); -%>
+
+<h1><%= title %></h1>
+<h3><%= content %></h3>
+<hr>
+<% let currentCategory = null; %>
+<% if (image && image.length > 0) { %>
+  <% image.forEach(function(imageData) { %>
+    <% const category = imageData.fieldName; %>
+    <% let categoryName = ""; %>
+    <% if (currentCategory !== category) { %>
+      <% if (currentCategory !== null) { %>
+        <br>
+      <% } %>
+      <% if (category === 'image1') { %>
+        <% categoryName = "Before work"; %>
+      <% } else if (category === 'image2') { %>
+        <% categoryName = "On work"; %>
+      <% } else if (category === 'image3') { %>
+        <% categoryName = "After work"; %>
+      <% } %>
+      <h4><%= categoryName %></h4>
+      <% currentCategory = category; %>
+    <% } %>
+    <div class="image-container1">
+      <img src="<%= imageData.imageUrl %>" class="img-fluid" alt="Image" style="width:auto; height:80%; object-fit: contain">
+    </div>
+    <br>
+    <hr><br>
+  <% }); %>
+<% } else { %>
+  <p>No images available for this post.</p>
+<% } %>
+
+<%- include("partials/footer"); -%>
